@@ -12,9 +12,12 @@ import numpy as np
 import pandas as pd
 
 
+import sys
+print('path', sys.path)
 
 from covid_xprize.examples.prescriptors.neat.utils import PRED_CASES_COL, prepare_historical_df, CASES_COL, IP_COLS, \
     IP_MAX_VALUES, add_geo_id, get_predictions
+
 
 # Cutoff date for training data
 from covid_xprize.validation.cost_generator import generate_costs
@@ -173,7 +176,8 @@ def eval_genomes(genomes, config):
         # stringency zero. To achieve more interesting behavior, a different fitness
         # function may be required.
         new_cases = pred_df[PRED_CASES_COL].mean().mean()
-        genome.fitness = -(new_cases * stringency)
+        a, b = 5, 5
+        genome.fitness = -(a*new_cases + b*stringency)
 
         print('Evaluated Genome', genome_id)
         print('New cases:', new_cases)
@@ -201,11 +205,11 @@ p.add_reporter(neat.Checkpointer(generation_interval=1,
                                  time_interval_seconds=600,
                                  filename_prefix='neat-checkpoint-'))
 
-# Run until a solution is found. Since a "solution" as defined in our config
+# Run until a solutiones is found. Since a "solution" as defined in our config
 # would have 0 fitness, this will run indefinitely and require manual stopping,
 # unless evolution finds the solution that uses 0 for all ips. A different
 # value can be placed in the config for automatic stopping at other thresholds.
-winner = p.run(eval_genomes)
+winner = p.run(eval_genom)
 
 # At any time during evolution, we can inspect the latest saved checkpoint
 # neat-checkpoint-* to see how well it is doing.

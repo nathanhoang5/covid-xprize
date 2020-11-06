@@ -17,7 +17,7 @@ import neat
 from covid_xprize.examples.prescriptors.neat.utils import prepare_historical_df, CASES_COL, IP_COLS, IP_MAX_VALUES, \
     add_geo_id, get_predictions, PRED_CASES_COL
 
-PRESCRIPTORS_FILE = 'neat-checkpoint-0'
+PRESCRIPTORS_FILE = 'neat-checkpoint-2'
 
 # Number of days the prescriptors look at in the past.
 NB_LOOKBACK_DAYS = 14
@@ -28,7 +28,7 @@ def prescribe(start_date_str: str,
               path_to_prior_ips_file: str,
               path_to_cost_file: str,
               output_file_path) -> None:
-
+    print(output_file_path)
     start_date = pd.to_datetime(start_date_str, format='%Y-%m-%d')
     end_date = pd.to_datetime(end_date_str, format='%Y-%m-%d')
 
