@@ -234,7 +234,7 @@ if __name__ == '__main__':
               ]
 
     EX_TIME = 30
-    for i in range(len(weights)):
+    for i in range(6, len(weights)):
         print(f"**************************** ROUND {i} ********************************")
         a, b = weights[i]
         p = multiprocessing.Process(target=main, name=f"main-{i}", args=(a,b))
