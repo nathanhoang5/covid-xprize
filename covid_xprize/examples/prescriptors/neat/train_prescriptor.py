@@ -226,57 +226,57 @@ from shutil import copyfile
 from google.colab import files
 import subprocess
 if __name__ == '__main__':
-    rc = subprocess.call("/content/covid-xprize/covid_xprize/examples/prescriptors/neat/pushtogit.sh")
 
-    # print('starting run')
-    # weights = [(1,1000), (5, 1000), (10,1000), (50, 1000), 
-    #           (100,1000), (500, 1000), (1000,1000), (20, 1000), (250, 1000),
-    #           (1,1)
-    #           ]
+    print('starting run')
+    weights = [(1,1000), (5, 1000), (10,1000), (50, 1000), 
+              (100,1000), (500, 1000), (1000,1000), (20, 1000), (250, 1000),
+              (1,1)
+              ]
 
-    # EX_TIME = 30
-    # for i in range(len(weights)):
-    #     print(f"**************************** ROUND {i} ********************************")
-    #     a, b = weights[i]
-    #     p = multiprocessing.Process(target=main, name=f"main-{i}", args=(a,b))
-    #     p.start()
+    EX_TIME = 30
+    for i in range(len(weights)):
+        print(f"**************************** ROUND {i} ********************************")
+        a, b = weights[i]
+        p = multiprocessing.Process(target=main, name=f"main-{i}", args=(a,b))
+        p.start()
 
-    #     # Wait 10 seconds for foo
+        # Wait 10 seconds for foo
         
-    #     time.sleep(60 * EX_TIME)
+        time.sleep(60 * EX_TIME)
 
-    #     # Terminate foo
-    #     p.terminate()
+        # Terminate foo
+        p.terminate()
 
-    #     # Cleanup
-    #     p.join()
+        # Cleanup
+        p.join()
 
-    #     print('MOVING CPS')
-    #     neatcheckpoints = []
-    #     print('cps:',  neatcheckpoints)
-    #     for filename in os.listdir(CURRENT_DIR):
-    #         if fnmatch.fnmatch(filename, 'neat-checkpoint-*'):
-    #             neatcheckpoints.append(filename)
+        print('MOVING CPS')
+        neatcheckpoints = []
+        print('cps:',  neatcheckpoints)
+        for filename in os.listdir(CURRENT_DIR):
+            if fnmatch.fnmatch(filename, 'neat-checkpoint-*'):
+                neatcheckpoints.append(filename)
         
-    #     latest_checkpoint = None
-    #     for j in range(20, -1, -1):
-    #         cp_name = f'neat-checkpoint-{j}'
-    #         if cp_name in neatcheckpoints:
-    #             latest_checkpoint = cp_name
-    #             break
+        latest_checkpoint = None
+        for j in range(20, -1, -1):
+            cp_name = f'neat-checkpoint-{j}'
+            if cp_name in neatcheckpoints:
+                latest_checkpoint = cp_name
+                break
         
-    #     if latest_checkpoint is None:
-    #         print('ERROR: No latest checkpoint')
-    #     else:
-    #         copyfile(latest_checkpoint, f'checkpoints/{i}-neat-checkpoint')
+        if latest_checkpoint is None:
+            print('ERROR: No latest checkpoint')
+        else:
+            copyfile(latest_checkpoint, f'checkpoints/{i}-neat-checkpoint')
 
-    #     for cp in neatcheckpoints:
-    #         if not os.path.exists(cp):
-    #             print(f"ERROR: CP doesn't exist {cp}")
-    #         else:
-    #             os.remove(cp)
+        for cp in neatcheckpoints:
+            if not os.path.exists(cp):
+                print(f"ERROR: CP doesn't exist {cp}")
+            else:
+                os.remove(cp)
         
-    #     rc = subprocess.call("pushtogit.sh")
+        rc = subprocess.call("/content/covid-xprize/covid_xprize/examples/prescriptors/neat/pushtogit.sh")
+
         
 
 

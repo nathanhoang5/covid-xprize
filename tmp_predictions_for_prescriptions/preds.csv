@@ -1,62 +1,123 @@
 CountryName,RegionName,Date,PredictedDailyNewCases
 Anguilla,,2020-08-01,0.0
+Anguilla,,2020-08-02,0.0
 Azerbaijan,,2020-08-01,0.0
+Azerbaijan,,2020-08-02,0.0
 Benin,,2020-08-01,0.0
+Benin,,2020-08-02,0.0
 Belarus,,2020-08-01,0.0
-Brazil,,2020-08-01,14764.8599736406
+Belarus,,2020-08-02,0.0
+Brazil,,2020-08-01,14817.35697429434
+Brazil,,2020-08-02,6503.07214684974
 Bhutan,,2020-08-01,0.0
+Bhutan,,2020-08-02,0.0
 Central African Republic,,2020-08-01,0.0
+Central African Republic,,2020-08-02,0.0
 Cote d'Ivoire,,2020-08-01,0.0
+Cote d'Ivoire,,2020-08-02,0.0
 Congo,,2020-08-01,0.0
+Congo,,2020-08-02,0.0
 Comoros,,2020-08-01,0.0
+Comoros,,2020-08-02,0.0
 Cape Verde,,2020-08-01,0.0
+Cape Verde,,2020-08-02,0.0
 Cayman Islands,,2020-08-01,0.0
+Cayman Islands,,2020-08-02,0.0
 Cyprus,,2020-08-01,0.0
+Cyprus,,2020-08-02,0.0
 Dominica,,2020-08-01,0.0
+Dominica,,2020-08-02,0.0
 Eritrea,,2020-08-01,0.0
+Eritrea,,2020-08-02,0.0
 Ethiopia,,2020-08-01,0.0
+Ethiopia,,2020-08-02,0.0
 Fiji,,2020-08-01,0.0
+Fiji,,2020-08-02,0.0
 Falkland Islands,,2020-08-01,0.0
+Falkland Islands,,2020-08-02,0.0
 Gabon,,2020-08-01,0.0
+Gabon,,2020-08-02,0.0
 Georgia,,2020-08-01,0.0
+Georgia,,2020-08-02,0.0
 Gibraltar,,2020-08-01,0.0
+Gibraltar,,2020-08-02,0.0
 Guinea,,2020-08-01,0.0
+Guinea,,2020-08-02,0.0
 Greenland,,2020-08-01,0.0
+Greenland,,2020-08-02,0.0
 Haiti,,2020-08-01,0.0
-India,,2020-08-01,45722.940027491655
+Haiti,,2020-08-02,0.0
+India,,2020-08-01,45968.5368173267
+India,,2020-08-02,46161.12141117355
 Jamaica,,2020-08-01,0.0
+Jamaica,,2020-08-02,0.0
 Cambodia,,2020-08-01,0.0
+Cambodia,,2020-08-02,0.0
 Liberia,,2020-08-01,0.0
+Liberia,,2020-08-02,0.0
 Libya,,2020-08-01,0.0
+Libya,,2020-08-02,0.0
 Lithuania,,2020-08-01,0.0
+Lithuania,,2020-08-02,0.0
 Latvia,,2020-08-01,0.0
+Latvia,,2020-08-02,0.0
 Moldova,,2020-08-01,0.0
-Mexico,,2020-08-01,6236.750757299717
+Moldova,,2020-08-02,0.0
+Mexico,,2020-08-01,6264.352009041262
+Mexico,,2020-08-02,4538.585032586097
 Montserrat,,2020-08-01,0.0
+Montserrat,,2020-08-02,0.0
 Nepal,,2020-08-01,0.0
+Nepal,,2020-08-02,0.0
 Pitcairn Islands,,2020-08-01,0.0
+Pitcairn Islands,,2020-08-02,0.0
 Palestine,,2020-08-01,0.0
-Russia,,2020-08-01,18870.005539137805
+Palestine,,2020-08-02,0.0
+Russia,,2020-08-01,18971.83152195682
+Russia,,2020-08-02,19284.973826972822
 Senegal,,2020-08-01,0.0
+Senegal,,2020-08-02,0.0
 Solomon Islands,,2020-08-01,0.0
+Solomon Islands,,2020-08-02,0.0
 San Marino,,2020-08-01,0.0
+San Marino,,2020-08-02,0.0
 Somalia,,2020-08-01,0.0
+Somalia,,2020-08-02,0.0
 Suriname,,2020-08-01,0.0
+Suriname,,2020-08-02,0.0
 Turks and Caicos Islands,,2020-08-01,0.0
+Turks and Caicos Islands,,2020-08-02,0.0
 Togo,,2020-08-01,0.0
+Togo,,2020-08-02,0.0
 Tajikistan,,2020-08-01,0.0
+Tajikistan,,2020-08-02,0.0
 Turkmenistan,,2020-08-01,0.0
+Turkmenistan,,2020-08-02,0.0
 Timor-Leste,,2020-08-01,0.0
+Timor-Leste,,2020-08-02,0.0
 Taiwan,,2020-08-01,0.0
-United States,,2020-08-01,86642.70192724215
-United States,California,2020-08-01,4432.796065002488
+Taiwan,,2020-08-02,0.0
+United States,,2020-08-01,87173.46674239798
+United States,,2020-08-02,87049.21550881478
+United States,California,2020-08-01,4459.7289349166995
+United States,California,2020-08-02,4214.564817157564
 United States,Washington DC,2020-08-01,0.0
-United States,Florida,2020-08-01,2530.5595517387646
-United States,New York,2020-08-01,2208.8759886976563
-United States,Texas,2020-08-01,8194.280608186516
+United States,Washington DC,2020-08-02,0.0
+United States,Florida,2020-08-01,2555.3186548735416
+United States,Florida,2020-08-02,4973.155928959022
+United States,New York,2020-08-01,2221.518768673341
+United States,New York,2020-08-02,2261.2581505484904
+United States,Texas,2020-08-01,8339.574474165049
+United States,Texas,2020-08-02,5161.971941918312
 United States,Virgin Islands,2020-08-01,0.0
+United States,Virgin Islands,2020-08-02,0.0
 British Virgin Islands,,2020-08-01,0.0
+British Virgin Islands,,2020-08-02,0.0
 United States Virgin Islands,,2020-08-01,0.0
+United States Virgin Islands,,2020-08-02,0.0
 Vanuatu,,2020-08-01,0.0
+Vanuatu,,2020-08-02,0.0
 Yemen,,2020-08-01,0.0
-South Africa,,2020-08-01,1675.2487896563155
+Yemen,,2020-08-02,0.0
+South Africa,,2020-08-01,1683.145330911726
+South Africa,,2020-08-02,1282.578122935815
