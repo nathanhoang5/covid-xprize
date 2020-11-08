@@ -47,7 +47,7 @@ NB_LOOKBACK_DAYS = 14
 NB_EVAL_COUNTRIES = 10
 
 
-def main(i, a, b):
+def main(a, b):
 
     # Load historical data with basic preprocessing
     print("Loading historical data...")
@@ -214,7 +214,7 @@ def main(i, a, b):
     # would have 0 fitness, this will run indefinitely and require manual stopping,
     # unless evolution finds the solution that uses 0 for all ips. A different
     # value can be placed in the config for automatic stopping at other thresholds.
-    winner = p.run(eval_genom)
+    winner = p.run(eval_genomes)
 
     # At any time during evolution, we can inspect the latest saved checkpoint
     # neat-checkpoint-* to see how well it is doing.
@@ -223,48 +223,56 @@ CURRENT_DIR = "/content/covid-xprize/covid_xprize/examples/prescriptors/neat"
 import os
 import fnmatch
 from shutil import copyfile
+from google.colab import files
 if __name__ == '__main__':
     print('starting run')
-    # Start foo as a process
-    # weights = [(1,1000), (5, 1000), (10,1000), (50, 1000), 
-    #           (100,1000), (500, 1000), (1000,1000), (20, 1000), (250, 1000),
-    #           (1,1)
-    #           ]
+    weights = [(1,1000), (5, 1000), (10,1000), (50, 1000), 
+              (100,1000), (500, 1000), (1000,1000), (20, 1000), (250, 1000),
+              (1,1)
+              ]
 
-    # EX_TIME = 4
-    # for i in range(len(weights)):
+    EX_TIME = 30
+    for i in range(len(weights)):
+        print(f"**************************** ROUND {i} ********************************")
+        a, b = weights[i]
+        p = multiprocessing.Process(target=main, name=f"main-{i}", args=(a,b))
+        p.start()
+
+        # Wait 10 seconds for foo
         
-    #     a, b = weights[i]
-    #     p = multiprocessing.Process(target=main, name=f"main-{i}", args=(i,a,b))
-    #     p.start()
+        time.sleep(60 * EX_TIME)
 
-    #     # Wait 10 seconds for foo
+        # Terminate foo
+        p.terminate()
+
+        # Cleanup
+        p.join()
+
+        print('MOVING CPS')
+        neatcheckpoints = []
+        print('cps:',  neatcheckpoints)
+        for filename in os.listdir(CURRENT_DIR):
+            if fnmatch.fnmatch(filename, 'neat-checkpoint-*'):
+                neatcheckpoints.append(filename)
         
-    #     time.sleep(60 * EX_TIME)
+        latest_checkpoint = None
+        for j in range(20, -1, -1):
+            cp_name = f'neat-checkpoint-{j}'
+            if cp_name in neatcheckpoints:
+                latest_checkpoint = cp_name
+                break
+        
+        if latest_checkpoint is None:
+            print('ERROR: No latest checkpoint')
+        else:
+            copyfile(latest_checkpoint, f'checkpoints/{i}-neat-checkpoint')
 
-    #     # Terminate foo
-    #     p.terminate()
-
-    #     # Cleanup
-    #     p.join()
-    neatcheckpoints = []
-    for filename in os.listdir(CURRENT_DIR):
-        if fnmatch.fnmatch(filename, 'neat-checkpoint-*'):
-            neatcheckpoints.append(filename)
-    
-    latest_checkpoint = None
-    for i in range(20, -1, -1):
-        cp_name = f'neat-checkpoint-{i}'
-        if cp_name in neatcheckpoints:
-            latest_checkpoint = cp_name
-            break
-    
-    if latest_checkpoint is None:
-        print('ERROR: No latest checkpoint')
-    else:
-        print('jjjj', latest_checkpoint)
-        t = 0
-        copyfile(latest_checkpoint, f'checkpoints/{t}-neat-checkpoint')
+        for cp in neatcheckpoints:
+            if not os.path.exists(cp):
+                print(f"ERROR: CP doesn't exist {cp}")
+            else:
+                os.remove(cp)
+        
 
 
 
