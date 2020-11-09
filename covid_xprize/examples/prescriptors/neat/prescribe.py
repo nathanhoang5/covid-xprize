@@ -17,7 +17,7 @@ import neat
 from covid_xprize.examples.prescriptors.neat.utils import prepare_historical_df, CASES_COL, IP_COLS, IP_MAX_VALUES, \
     add_geo_id, get_predictions, PRED_CASES_COL
 
-PRESCRIPTORS_FILE = 'neat-checkpoint-1'
+
 
 # Number of days the prescriptors look at in the past.
 NB_LOOKBACK_DAYS = 14
@@ -27,9 +27,11 @@ def prescribe(start_date_str: str,
               end_date_str: str,
               path_to_prior_ips_file: str,
               path_to_cost_file: str,
-              output_file_path) -> None:
+              output_file_path,
+              prescriptors_file,
+              ) -> None:
     
-
+    print('output file:', output_file_path, '   file:', prescriptors_file)
     start_date = pd.to_datetime(start_date_str, format='%Y-%m-%d')
     end_date = pd.to_datetime(end_date_str, format='%Y-%m-%d')
 
@@ -56,7 +58,7 @@ def prescribe(start_date_str: str,
     ip_max_values_arr = np.array([IP_MAX_VALUES[ip] for ip in IP_COLS])
 
     # Load prescriptors
-    checkpoint = neat.Checkpointer.restore_checkpoint(PRESCRIPTORS_FILE)
+    checkpoint = neat.Checkpointer.restore_checkpoint(prescriptors_file)
     prescriptors = checkpoint.population.values()
     config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction,
                          neat.DefaultSpeciesSet, neat.DefaultStagnation,
@@ -166,7 +168,8 @@ def prescribe(start_date_str: str,
 
     return
 
-
+import subprocess
+import os
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--start_date",
@@ -198,5 +201,10 @@ if __name__ == '__main__':
                         help="The path to an intervention plan .csv file")
     args = parser.parse_args()
     print(f"Generating prescriptions from {args.start_date} to {args.end_date}...")
-    prescribe(args.start_date, args.end_date, args.prior_ips_file, args.cost_file, args.output_file)
+    cp_path = "/content/covid-xprize/covid_xprize/examples/prescriptors/neat/checkpoints"
+    for file_name in sorted(os.listdir(cp_path)):
+      print("prescribing", file_name)
+      prescribe(args.start_date, args.end_date, args.prior_ips_file, args.cost_file, f"pres_out/{file_name}.csv", f"checkpoints/{file_name}")
+      rc = subprocess.call("/content/covid-xprize/covid_xprize/examples/prescriptors/neat/pushtogit.sh")
+
     print("Done!")
