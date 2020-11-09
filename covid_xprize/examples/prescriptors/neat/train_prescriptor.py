@@ -228,13 +228,11 @@ import subprocess
 if __name__ == '__main__':
 
     print('starting run')
-    weights = [(1,1000), (5, 1000), (10,1000), (50, 1000), 
-              (100,1000), (500, 1000), (1000,1000), (20, 1000), (250, 1000),
-              (1,1)
+    weights = [(1000, 0), (1000, 1), (1000, 10), (1000, 500), (5,5)
               ]
 
     EX_TIME = 30
-    for i in range(6, len(weights)):
+    for i in range(0, len(weights)):
         print(f"**************************** ROUND {i} ********************************")
         a, b = weights[i]
         p = multiprocessing.Process(target=main, name=f"main-{i}", args=(a,b))
@@ -267,7 +265,7 @@ if __name__ == '__main__':
         if latest_checkpoint is None:
             print('ERROR: No latest checkpoint')
         else:
-            copyfile(latest_checkpoint, f'checkpoints/{i}-neat-checkpoint')
+            copyfile(latest_checkpoint, f'run2cp/{i}-neat-checkpoint')
 
         for cp in neatcheckpoints:
             if not os.path.exists(cp):
