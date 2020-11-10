@@ -201,10 +201,10 @@ if __name__ == '__main__':
                         help="The path to an intervention plan .csv file")
     args = parser.parse_args()
     print(f"Generating prescriptions from {args.start_date} to {args.end_date}...")
-    cp_path = "/content/covid-xprize/covid_xprize/examples/prescriptors/neat/run2cp"
+    cp_path = "/content/covid-xprize/covid_xprize/examples/prescriptors/neat/run3cp"
     for file_name in sorted(os.listdir(cp_path)):
       print("prescribing", file_name)
-      prescribe(args.start_date, args.end_date, args.prior_ips_file, args.cost_file, f"run2csv/{file_name}.csv", f"run2cp/{file_name}")
+      prescribe(args.start_date, args.end_date, args.prior_ips_file, args.cost_file, f"run3csv/{file_name}.csv", f"run3cp/{file_name}")
       rc = subprocess.call("/content/covid-xprize/covid_xprize/examples/prescriptors/neat/pushtogit.sh")
 
     print("Done!")
