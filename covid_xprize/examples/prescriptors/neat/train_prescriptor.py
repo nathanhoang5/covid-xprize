@@ -228,13 +228,11 @@ import subprocess
 if __name__ == '__main__':
 
     print('starting run')
-    nextw = [
+    weights = [
       (1, 0), (1, .00001), (1, .001), (1, .01), (1, .1), 
-      (1, .5), (1, 1), (.5, 1) (.1, 1), 
+      (1, .5), (1, 1), (.5, 1), (.1, 1), 
       (.01, 1), (.001, 1), (.00001, 1), (0, 1), 
     ]
-    weights = [(1000, 0), (1000, 1), (1000, 10), (1000, 500), (5,5)
-              ]
 
     EX_TIME = 30
     for i in range(0, len(weights)):
@@ -270,7 +268,7 @@ if __name__ == '__main__':
         if latest_checkpoint is None:
             print('ERROR: No latest checkpoint')
         else:
-            copyfile(latest_checkpoint, f'run2cp/{i}-neat-checkpoint')
+            copyfile(latest_checkpoint, f'run3cp/{i}-neat-checkpoint')
 
         for cp in neatcheckpoints:
             if not os.path.exists(cp):
