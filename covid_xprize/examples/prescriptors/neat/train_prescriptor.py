@@ -182,7 +182,7 @@ def main(a, b):
             # function may be required.
             new_cases = pred_df[PRED_CASES_COL].mean().mean()
             
-            genome.fitness = -(a*new_cases + b*stringency)
+            genome.fitness = -(a*(new_cases **2) + b*(stringency**2))
 
             print('Evaluated Genome', genome_id)
             print('New cases:', new_cases)
@@ -235,7 +235,7 @@ if __name__ == '__main__':
     ]
 
     EX_TIME = 30
-    for i in range(4, len(weights)):
+    for i in range(0, len(weights)):
         print(f"**************************** ROUND {i} ********************************")
         a, b = weights[i]
         p = multiprocessing.Process(target=main, name=f"main-{i}", args=(a,b))
